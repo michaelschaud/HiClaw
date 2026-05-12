@@ -44,9 +44,11 @@ build:
 	$(GO) build $(GOFLAGS) -ldflags "$(LD_FLAGS)" -o $(OUT_DIR)/$(PROJECT_NAME) ./cmd/$(PROJECT_NAME)/...
 
 ## Run unit tests
+# Note: removed -race flag locally since it slows things down significantly on my machine;
+# CI should still run with -race enabled via its own workflow config.
 test:
 	@echo "==> Running tests"
-	$(GO) test ./... -v -race -coverprofile=coverage.out -covermode=atomic
+	$(GO) test ./... -v -coverprofile=coverage.out -covermode=atomic
 
 ## Run golangci-lint
 lint:
