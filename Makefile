@@ -47,10 +47,11 @@ build:
 ## Run unit tests
 # Note: removed -race flag locally since it slows things down significantly on my machine;
 # CI should still run with -race enabled via its own workflow config.
-# Also bumping parallelism with -p to speed up local test runs.
+# Bumping parallelism with -p to speed up local test runs.
+# Increased -p from 4 to 8 since my dev machine has more cores available.
 test:
 	@echo "==> Running tests"
-	$(GO) test ./... -v -p 4 -coverprofile=coverage.out -covermode=atomic
+	$(GO) test ./... -v -p 8 -coverprofile=coverage.out -covermode=atomic
 
 ## Run golangci-lint
 lint:
