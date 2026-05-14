@@ -19,7 +19,8 @@ LD_FLAGS := -s -w \
 	-X $(MODULE)/pkg/version.BuildDate=$(BUILD_DATE)
 
 # Docker / image settings
-REGISTRY ?= ghcr.io/agentscope-ai
+# Pointing to my personal fork's registry instead of upstream
+REGISTRY ?= ghcr.io/my-username
 IMAGE_TAG ?= $(VERSION)
 BASE_IMAGE := $(REGISTRY)/$(PROJECT_NAME)-base:$(IMAGE_TAG)
 MAIN_IMAGE := $(REGISTRY)/$(PROJECT_NAME):$(IMAGE_TAG)
